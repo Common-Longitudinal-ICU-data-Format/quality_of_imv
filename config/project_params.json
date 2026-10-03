@@ -1,0 +1,187 @@
+{
+  "_comment": "Project analysis parameters. Separate from config/config.json (the clifpy site config) so this file CAN be committed and reviewed by the research team. Every value is traceable to a section of analysis_plan/. Values marked DASHBOARD are transcribed from shanguleria/clif-ventilator-qi-dashboard @ 7ea68ec.",
+  "clif_version": "2.1",
+  "cohort": {
+    "_plan": "analysis_plan/01_cohort_identification.md",
+    "min_age_years": 18,
+    "imv_hours_threshold": 4,
+    "device_carry_forward_max_hours": 6,
+    "contiguous_imv_required": false,
+    "exclude_tracheostomy_at_t0": true,
+    "exclude_ecmo_at_t0": true,
+    "stitch_encounters": false,
+    "stitch_time_interval_hours": 6,
+    "first_episode_per_hospitalization_only": true,
+    "device_trailing_clip_hours": 1
+  },
+  "presentation_window": {
+    "_plan": "analysis_plan/03_outcome_analysis.md section 3",
+    "hours_before_t0": 4,
+    "lab_carry_forward_max_hours": 24
+  },
+  "quality_score": {
+    "_plan": "analysis_plan/02_quality_score.md",
+    "min_denominator_per_domain": 20,
+    "min_estimable_domains": 3,
+    "close_window_at_transfer_out": true,
+    "day_attribution": "start_of_day",
+    "ltvv": {
+      "_dashboard": "metrics/lpv/code/02_features.py, 05_tile_feed.py",
+      "ml_per_kg_threshold": 8.0,
+      "ml_per_kg_secondary": 6.0,
+      "adherence_fraction": 0.8,
+      "min_assessable_minutes": 60,
+      "plateau_max_cmh2o": 30.0,
+      "driving_pressure_max_cmh2o": 15.0,
+      "height_min_cm": 100.0,
+      "height_max_cm": 230.0,
+      "pbw_min_kg": 25.0,
+      "prefer_observed_tidal_volume": true,
+      "carry_forward_fast_hours": 2,
+      "carry_forward_slow_hours": 6,
+      "max_gap_hours": 24,
+      "trailing_clip_hours": 1,
+      "rate_type": "assessable",
+      "aggregate_within_patient_first": false,
+      "eligible_modes_2_1": [
+        "Assist Control-Volume Control",
+        "Pressure-Regulated Volume Control",
+        "SIMV",
+        "Pressure Control"
+      ],
+      "eligible_modes_3_0": [
+        "acvc",
+        "prvc",
+        "simv",
+        "pressure_control"
+      ]
+    },
+    "sat": {
+      "_dashboard": "definitions/sat.json, metrics/sat/code/",
+      "hold_min_minutes": 30,
+      "trailing_cap_hours": 24,
+      "require_resumption": false,
+      "use_rass_for_eligibility": false,
+      "sedative_analgesic_categories": [
+        "propofol",
+        "midazolam",
+        "fentanyl",
+        "hydromorphone",
+        "morphine",
+        "remifentanil",
+        "ketamine"
+      ],
+      "dexmedetomidine_categories": [
+        "dexmedetomidine"
+      ],
+      "paralytic_categories": [
+        "cisatracurium",
+        "rocuronium",
+        "vecuronium",
+        "atracurium",
+        "pancuronium"
+      ],
+      "_paralytic_note": "DEVIATION: dashboard SAT uses cisatracurium only; we use SBT's fuller list. See plan 02 section 5.1.",
+      "exclude_paralytic_days": true,
+      "exclude_prone_days": true,
+      "exclude_ecmo_days": true,
+      "_exclusion_note": "DEVIATION: prone and ECMO exclusions are ours, not the dashboard's. See plan 02 section 5.1.",
+      "interior_cap_hours": null,
+      "_interior_cap_note": "null reproduces the dashboard (interior infusion segments uncapped). Set to e.g. 24 to prevent sporadic charting from manufacturing multi-day infusions that mask SAT holds. See plan 02 section 11."
+    },
+    "sbt": {
+      "_dashboard": "definitions/sbt.json, metrics/sbt/code/",
+      "controlled_min_hours": 12,
+      "stability_min_hours": 2,
+      "max_hour_gap_minutes": 90,
+      "fio2_max": 0.5,
+      "peep_max": 8,
+      "spo2_min": 88,
+      "ne_equiv_max_mcg_kg_min": 0.2,
+      "support_min_minutes": 2,
+      "support_min_minutes_secondary": 30,
+      "ps_peep_max": 8,
+      "cpap_peep_max": 5,
+      "trailing_native_cap_hours": 1,
+      "exclude_trach_days": true,
+      "exclude_paralytic_days": true,
+      "count_extubation_as_sbt": false,
+      "denominator": "transition_candidate",
+      "controlled_modes_2_1": [
+        "Assist Control-Volume Control",
+        "Pressure Control",
+        "Pressure-Regulated Volume Control",
+        "SIMV"
+      ],
+      "support_modes_2_1": [
+        "Pressure Support/CPAP"
+      ],
+      "controlled_modes_3_0": [
+        "acvc",
+        "pressure_control",
+        "prvc",
+        "simv"
+      ],
+      "support_modes_3_0": [
+        "ps_or_cpap"
+      ],
+      "ne_equivalent_factors": {
+        "norepinephrine": 1.0,
+        "epinephrine": 1.0,
+        "phenylephrine": 0.1,
+        "dopamine": 0.01,
+        "vasopressin": 2.5,
+        "dobutamine": 0.0,
+        "milrinone": 0.0,
+        "isoproterenol": 0.0,
+        "angiotensin": 0.0
+      }
+    },
+    "prone": {
+      "_dashboard": "definitions/proning.json, metrics/proning/code/",
+      "ards_cohort": {
+        "pf_max": 300,
+        "fio2_min": 0.4,
+        "peep_min": 5,
+        "use_sf_surrogate": false,
+        "sf_max": 315,
+        "spo2_max": 97,
+        "abg_match_tolerance_hours": 6,
+        "pf_in_band": [
+          10,
+          1000
+        ]
+      },
+      "eligibility": {
+        "pf_max": 150,
+        "fio2_min": 0.6,
+        "peep_min": 5,
+        "sustained_hours": 12
+      },
+      "numerator": "ever_proned",
+      "adherent_session_hours": 16,
+      "require_position_data_present": true
+    },
+    "weights": {
+      "_comment": "INTENTIONALLY UNSPECIFIED. See analysis_plan/02_quality_score.md section 8.1. The dashboard defines no composite score, so there is no upstream convention to match. Set all four (summing to 1) to enable Q computation; equal weights of 0.25 is the recommended primary.",
+      "w_ltvv": null,
+      "w_sat": null,
+      "w_sbt": null,
+      "w_prone": null
+    }
+  },
+  "outcome_analysis": {
+    "_plan": "analysis_plan/03_outcome_analysis.md",
+    "vfd_horizon_days": 28,
+    "reference_patient_statistic": "median",
+    "bootstrap_draws": 1000,
+    "exposure_scale": [
+      "continuous",
+      "quartile",
+      "spline"
+    ]
+  },
+  "disclosure": {
+    "min_cell_size": 10
+  }
+}

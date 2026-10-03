@@ -1,0 +1,24 @@
+[project]
+name = "quality-of-imv"
+version = "0.1.0"
+description = "CLIF IMV Quality Report: unit-level ventilator quality scoring and outcome analysis"
+requires-python = ">=3.10"
+dependencies = [
+    "clifpy>=2.1.0",
+    "marimo>=0.20",
+    "pandas>=2.0",
+    "numpy>=1.24",
+    "pyarrow>=14",
+    "duckdb>=1.0",
+    "matplotlib>=3.7",
+    "scipy>=1.11",
+    "statsmodels>=0.14",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+]
+
+[tool.uv]
+package = false
