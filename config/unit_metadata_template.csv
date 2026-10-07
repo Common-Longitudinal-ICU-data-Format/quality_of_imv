@@ -1,0 +1,3 @@
+site,location_name,hospital_id,location_type,hospital_beds,academic
+YOUR_SITE,EXAMPLE_MICU,HOSP_1,medical_icu,800,1
+YOUR_SITE,EXAMPLE_SICU,HOSP_1,surgical_icu,800,1

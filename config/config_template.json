@@ -3,5 +3,6 @@
     "data_directory": "./clif_demo",
     "filetype": "parquet",
     "timezone": "US/Eastern",
-    "output_directory": "./output"
+    "output_directory": "./output",
+    "clif_version": "2.1"
 }

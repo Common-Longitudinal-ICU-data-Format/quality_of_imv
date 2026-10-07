@@ -1,0 +1,46 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2761
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Roman;\f1\fmodern\fcharset0 Courier;\f2\froman\fcharset0 Times-Italic;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid2\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid101\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs24 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 /start-clif-session\
+This is a project with the goal of creating and validating a "CLIF IMV quality report". It will pull together a lot of work on lung-protective ventilation, proning, SAT, and SBT.\
+Basic objective:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 grade unit level 
+\f1\fs26 location_name
+\f0\fs24  performance across the 4 domains above\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 this can be flipped into a MPOG like quality assessment product down the line!\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 associate exposure to ICU quality with ICU outcomes\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 code for context:\uc0\u8232 https://github.com/shanguleria/clif-ventilator-qi-dashboard\
+read the pdf and make the changes I put in the notes to the PDF, that's the plan for outcome_analysis. convert it to an easy to edit markdown (keep the equations). Make a similar markdown plan document for cohort_identification and calculate quality score.\
+The workflow will be research team reviews and edits analysis plan -> you update the code.\
+lets use /marimo-notebook with the following structure.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	1	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 cohort_identification- all adults with IMV > 4 hours and admitted to an ICU. Time zero for analyses is the time when the patient was in the ICU and had 4 hours of IMV. So if on IMV in the ER for 8 hours prior to admission to ICU, time zero is ICU admit time. if IMV starts in the ICU, time zero is after 4 hours of IMV. This notebook creates a table 1, strobe diagram, and list of hospitalization_ids\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	2	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 calculate_Quality_Score- use the QI dashboard approach on the location_name level. Just develop the code for calculating the percentage of performance for each domain, the quality score will be a weighted average of the Q = w1
+\f2\i p_LTTV + w2
+\f0\i0 prop_SAT + w3
+\f2\i prop_SBT + w4
+\f0\i0 proned. Leave the weights unspecified for now\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	3	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 outcome_analysis- as described in the analysis above\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 Keep the code very basic for now with placeholders when we start developing on a real CLIF database. use clifpy. I created a repo from the CLIF template: https://github.com/Common-Longitudinal-ICU-data-Format/quality_of_imv\
+}

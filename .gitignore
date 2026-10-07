@@ -1,7 +1,10 @@
+# ============================================================
+# From the CLIF project template — do not drop these
+# ============================================================
+
 # R specific gitignores
 .Rprofile
 .Rhistory
-.Rprofile
 .Ruserdata
 .DS_Store
 *.Rproj
@@ -13,7 +16,7 @@ initialize_renv.R
 ## ignore filtered CLIF tables stored as Rdata
 *.RData
 
-#ignore source CLIF_ files
+# ignore source CLIF_ files
 clif_*.parquet
 clif_*.csv
 clif_*.fst
@@ -24,3 +27,43 @@ clif_*.fst
 # NEVER commit patient-level intermediate outputs (PHI) — keep only the folder's README
 output/intermediate_phi/*
 !output/intermediate_phi/README.md
+
+# ============================================================
+# Added for this project
+# ============================================================
+
+# Generated results. Reproducible by re-running the notebooks, and on a PUBLIC repo a file
+# named unit_quality_scores.csv could be mistaken for real site output. Keep the folder and
+# its README so the structure is still documented.
+output/final_no_phi/*
+!output/final_no_phi/README.md
+!output/final_no_phi/.gitkeep
+output/logs/
+
+# Site configuration: local paths, so invisible to reviewers by design.
+config/config.json
+
+# Site-supplied unit metadata: contains local unit names.
+config/unit_metadata.csv
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.ipynb_checkpoints/
+__marimo__/
+.pytest_cache/
+
+# Local Claude Code settings (machine-specific)
+.claude/settings.local.json
+
+# Editors
+.vscode/
+.idea/
+
+# Pandoc renders of the analysis plans. Generated, large (~650KB each), and they go stale
+# the moment the markdown is edited — which matters here, because the markdown is the
+# source of truth and a reviewer could otherwise read an outdated render.
+analysis_plan/*.html
